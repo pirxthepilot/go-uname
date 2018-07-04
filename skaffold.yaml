@@ -1,0 +1,13 @@
+apiVersion: skaffold/v1alpha2
+kind: Config
+build:
+  artifacts:
+  - imageName: go-uname-k8s
+    docker:
+      dockerfilePath: tools/skaffold/Dockerfile
+    workspace: .
+  local: {}
+deploy:
+  kubectl:
+    manifests:
+    - tools/skaffold/*.yaml

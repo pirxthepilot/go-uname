@@ -1,0 +1,4 @@
+/go-uname
+/vendor
+*.swp
+*.log
