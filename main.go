@@ -7,8 +7,7 @@ import (
 )
 
 func main() {
-	var ui uinf.UnameInfo
-	err := ui.Create()
+	ui, err := uinf.NewUnameInfo()
 	if err == nil {
 		fmt.Printf(
 			"%s %s %s %s %s %s\n",

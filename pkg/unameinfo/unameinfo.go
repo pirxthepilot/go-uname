@@ -15,21 +15,21 @@ type UnameInfo struct {
 	Domainname string
 }
 
-// Populates the UnameInfo struct
-func (u *UnameInfo) Create() error {
+// Creates the UnameInfo struct
+func NewUnameInfo() (*UnameInfo, error) {
 	var uts syscall.Utsname
 
 	err := syscall.Uname(&uts)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	u.Sysname = util.ByteToString(uts.Sysname)
-	u.Nodename = util.ByteToString(uts.Nodename)
-	u.Release = util.ByteToString(uts.Release)
-	u.Version = util.ByteToString(uts.Version)
-	u.Machine = util.ByteToString(uts.Machine)
-	u.Domainname = util.ByteToString(uts.Domainname)
-
-	return nil
+	return &UnameInfo{
+		Sysname:    util.ByteToString(uts.Sysname),
+		Nodename:   util.ByteToString(uts.Nodename),
+		Release:    util.ByteToString(uts.Release),
+		Version:    util.ByteToString(uts.Version),
+		Machine:    util.ByteToString(uts.Machine),
+		Domainname: util.ByteToString(uts.Domainname),
+	}, nil
 }
