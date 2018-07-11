@@ -4,7 +4,7 @@ build:
   artifacts:
   - imageName: go-uname-k8s
     docker:
-      dockerfilePath: tools/skaffold/Dockerfile
+      dockerfilePath: Dockerfile
     workspace: .
   local: {}
 deploy:
